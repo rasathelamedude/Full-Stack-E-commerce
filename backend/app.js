@@ -1,6 +1,7 @@
 import express, { urlencoded } from "express"
+import { connectToDB } from "./database/mongodb.js";
 import cors from 'cors';
-import { PORT } from "./config/env";
+import { PORT } from "./config/env.js";
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(cors({
 // routes;
 
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`Server started on port: ${PORT}`);
+
+    await connectToDB();
 });
