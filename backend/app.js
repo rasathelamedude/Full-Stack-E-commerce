@@ -5,6 +5,7 @@ import { PORT } from "./config/env.js";
 import userRouter from "./routes/users.routes.js";
 import productRouter from "./routes/products.routes.js";
 import authRouter from "./routes/auth.routes.js";
+import orderRouter from "./routes/orders.routes.js";
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/orders", orderRouter);
 
 app.listen(PORT, async () => {
   console.log(`Server started on port: ${PORT}`);
