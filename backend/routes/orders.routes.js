@@ -5,6 +5,7 @@ import {
   getOrderHistory,
   getOrder,
   createOrder,
+  getPendingOrders
 } from "../controllers/orders.controller.js";
 
 const orderRouter = Router();

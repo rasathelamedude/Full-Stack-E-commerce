@@ -6,6 +6,7 @@ export const authorize = async (req, res, next) => {
   let token;
 
   try {
+    // see if a token is provided
     if (
       req.headers.authorization ||
       req.headers.authorization.startsWith("Bearer")
@@ -13,14 +14,18 @@ export const authorize = async (req, res, next) => {
       token = req.headers.authorization.split(" ")[1];
     }
 
+    // if not throw error;
     if (!token) {
       throw new Error("Unauthorized!");
     }
 
+    // decode the token to figure out its user;
     const decode = jwt.verify(token, JWT_SECRET);
 
+    // find the user;
     const user = await User.findById(decode.userId);
 
+    // attach the user to the request object;
     req.user = user;
     next();
   } catch (error) {

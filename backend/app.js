@@ -1,3 +1,4 @@
+// packages
 import express, { urlencoded } from "express";
 import { connectToDB } from "./database/mongodb.js";
 import cors from "cors";
@@ -7,6 +8,7 @@ import productRouter from "./routes/products.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import orderRouter from "./routes/orders.routes.js";
 
+// initialize express app;
 const app = express();
 
 // general middlewares;
